@@ -1,0 +1,285 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* MAIN PAGE */
+body {
+    min-height: 100vh;
+    background: #030611;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* BACKGROUND LAYERS */
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(
+            ellipse at 50% 110%,
+            #10254c 0%,
+            transparent 55%
+        ),
+        #030611;
+    z-index: -1;
+}
+
+/* PURPLE AND BLUE COSMIC CLOUDS */
+.nebula {
+    position: absolute;
+    inset: -30%;
+    background:
+        radial-gradient(
+            ellipse at 30% 40%,
+            rgba(104, 40, 255, 0.20),
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 75% 60%,
+            rgba(0, 174, 255, 0.16),
+            transparent 35%
+        );
+
+    filter: blur(35px);
+    animation: nebulaMove 18s ease-in-out infinite alternate;
+}
+
+/* STAR LAYERS */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: transparent;
+    animation: starDrift linear infinite;
+}
+
+/* SMALL STARS */
+.stars-small {
+    box-shadow:
+        20px 100px #ffffff,
+        180px 250px #ffffff,
+        350px 80px #a5c8ff,
+        520px 400px #ffffff,
+        700px 160px #ffffff,
+        850px 500px #a5c8ff,
+        1000px 100px #ffffff,
+        1150px 350px #ffffff,
+        1300px 200px #a5c8ff,
+        1450px 550px #ffffff,
+        250px 650px #ffffff,
+        650px 750px #a5c8ff,
+        950px 700px #ffffff,
+        1200px 800px #ffffff,
+        400px 900px #ffffff,
+        80px 450px #a5c8ff,
+        1080px 600px #ffffff,
+        1380px 900px #ffffff;
+
+    animation-duration: 60s;
+}
+
+.stars-small::after {
+    content: "";
+    position: absolute;
+    top: 1000px;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    box-shadow: inherit;
+}
+
+/* MEDIUM STARS */
+.stars-medium {
+    width: 3px;
+    height: 3px;
+    box-shadow:
+        100px 200px #b8d9ff,
+        400px 300px #ffffff,
+        800px 100px #ffffff,
+        1100px 450px #b8d9ff,
+        1400px 250px #ffffff,
+        300px 700px #ffffff,
+        900px 850px #b8d9ff;
+
+    filter: drop-shadow(0 0 5px #6ea8ff);
+    animation-duration: 35s;
+}
+
+.stars-medium::after {
+    content: "";
+    position: absolute;
+    top: 1000px;
+    left: 0;
+    width: 3px;
+    height: 3px;
+    box-shadow: inherit;
+}
+
+/* LARGER GLOWING STARS */
+.stars-large {
+    width: 4px;
+    height: 4px;
+    background: #ffffff;
+    box-shadow:
+        300px 180px 6px #9bbdff,
+        750px 350px 8px #ffffff,
+        1150px 150px 6px #bca0ff,
+        500px 600px 8px #ffffff,
+        1350px 700px 6px #9bbdff;
+
+    filter: drop-shadow(0 0 8px #8f78ff);
+    animation: starTwinkle 3s ease-in-out infinite alternate;
+}
+
+/* EXTRA AMBIENT GLOW */
+.glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    top: 55%;
+    left: 50%;
+    border-radius: 50%;
+    background: rgba(62, 67, 255, 0.12);
+    filter: blur(100px);
+    transform: translate(-50%, -50%);
+    animation: glowPulse 6s ease-in-out infinite alternate;
+}
+
+/* TEXT CONTENT */
+.content {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+}
+
+.tag {
+    color: #9caeff;
+    letter-spacing: 5px;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    max-width: 1000px;
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+h1 span {
+    color: #9e8bff;
+    text-shadow: 0 0 30px rgba(120, 100, 255, 0.5);
+}
+
+.description {
+    color: #a7b1c9;
+    margin-top: 25px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* NEON BUTTON */
+.button {
+    margin-top: 35px;
+    padding: 15px 28px;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid rgba(155, 145, 255, 0.6);
+    border-radius: 8px;
+    background: rgba(103, 80, 255, 0.12);
+    box-shadow: 0 0 20px rgba(103, 80, 255, 0.12);
+    transition: 0.3s ease;
+}
+
+.button:hover {
+    background: rgba(103, 80, 255, 0.3);
+    box-shadow: 0 0 30px rgba(125, 105, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+/* ANIMATIONS */
+@keyframes starDrift {
+    from {
+        transform: translateY(-1000px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes starTwinkle {
+    from {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+@keyframes nebulaMove {
+    from {
+        transform: translate(-3%, -2%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(3%, 2%) rotate(8deg);
+    }
+}
+
+@keyframes glowPulse {
+    from {
+        opacity: 0.4;
+        scale: 0.8;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1.2;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .tag {
+        letter-spacing: 3px;
+    }
+
+    h1 {
+        letter-spacing: -1px;
+    }
+
+    .description {
+        font-size: 0.95rem;
+    }
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
